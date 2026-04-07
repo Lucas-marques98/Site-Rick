@@ -84,7 +84,7 @@ export default function PracticeAreas() {
             <motion.div 
               key={index} 
               variants={itemVariants}
-              className="bg-white rounded-xl p-8 border border-slate-100 shadow-md hover:shadow-2xl transform transition-all duration-300 group hover:-translate-y-3 hover:border-secondary/50 relative overflow-hidden"
+              className="bg-white rounded-xl p-6 sm:p-8 border border-slate-100 shadow-md hover:shadow-2xl transform transition-all duration-300 group hover:-translate-y-3 hover:border-secondary/50 relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:from-primary group-hover:via-secondary group-hover:to-primary transition-all duration-500"></div>
               

@@ -5,13 +5,13 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-slate-800">
+        <div className="grid md:grid-cols-4 gap-6 md:gap-8 mb-8 pb-8 border-b border-slate-800">
           <div className="col-span-1 md:col-span-2">
             <div className="flex flex-col items-start mb-2">
               <img 
                 src="/Logoo.png" 
                 alt="Dr. Henrique Fernandes Logo" 
-                className="h-40 md:h-56 w-auto object-contain mb-2 brightness-200 contrast-125 -ml-8 transform scale-110" 
+                className="h-28 md:h-56 w-auto object-contain mb-2 brightness-200 contrast-125 -ml-4 md:-ml-8 transform md:scale-110" 
               />
             </div>
             <p className="text-sm text-slate-400 max-w-sm">

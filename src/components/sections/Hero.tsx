@@ -42,7 +42,7 @@ export default function Hero() {
             Excelência Jurídica
           </span>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6 md:mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6 md:mb-8">
             Defesa estratégica e <br className="hidden md:block"/>
             especializada para <span className="text-secondary relative whitespace-nowrap">proteger seus direitos
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-secondary/40 fill-current" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 Q50,20 100,10 L100,20 L0,20 Z" /></svg>

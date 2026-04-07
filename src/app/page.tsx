@@ -15,7 +15,7 @@ import SocialProofPopup from "@/components/ui/SocialProofPopup";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background flex flex-col pt-0">
+    <main className="min-h-screen bg-background flex flex-col pt-0 overflow-x-hidden">
       <TopBar />
       <Navbar />
       <Hero />

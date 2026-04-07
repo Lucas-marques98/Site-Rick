@@ -16,8 +16,8 @@ export default function About() {
             className="order-2 lg:order-1 relative"
           >
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0">
-              <div className="absolute -inset-4 border border-secondary/30 rounded-xl transform translate-x-4 translate-y-4 -z-10"></div>
-              <div className="absolute -inset-4 border-2 border-primary/10 rounded-xl transform -translate-x-3 -translate-y-3 -z-10 bg-slate-50"></div>
+              <div className="absolute -inset-2 md:-inset-4 border border-secondary/30 rounded-xl transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10"></div>
+              <div className="absolute -inset-2 md:-inset-4 border-2 border-primary/10 rounded-xl transform -translate-x-1 -translate-y-1 md:-translate-x-3 md:-translate-y-3 -z-10 bg-slate-50"></div>
 
               <div className="relative w-full h-full overflow-hidden rounded-xl shadow-lg group">
                 <img
@@ -28,7 +28,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-700 pointer-events-none"></div>
               </div>
 
-              <div className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-8 bg-primary text-white p-5 md:p-6 rounded-xl shadow-2xl max-w-[180px] md:max-w-[200px] z-10 hover:-translate-y-2 transition-all duration-300 hover:shadow-primary/30">
+              <div className="absolute -bottom-4 -right-2 sm:-bottom-8 sm:-right-8 bg-primary text-white p-4 md:p-6 rounded-xl shadow-2xl max-w-[160px] sm:max-w-[180px] md:max-w-[200px] z-10 hover:-translate-y-2 transition-all duration-300 hover:shadow-primary/30">
                 <Shield className="w-8 h-8 mb-3 text-secondary" />
                 <p className="font-serif font-bold text-lg leading-tight mb-1">Ética e Transparência</p>
                 <p className="text-sm text-slate-300">Valores fundamentais</p>

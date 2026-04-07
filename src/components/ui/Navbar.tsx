@@ -34,7 +34,7 @@ export default function Navbar() {
             <img 
               src="/Logoo.png" 
               alt="Dr. Henrique Fernandes Logo" 
-              className="h-36 md:h-48 w-auto object-contain drop-shadow-md -my-12 transform scale-110" 
+              className="h-28 md:h-48 w-auto object-contain drop-shadow-md -my-8 md:-my-12 transform scale-[1.15] md:scale-110" 
             />
           </a>
         </div>
