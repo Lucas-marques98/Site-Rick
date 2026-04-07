@@ -32,7 +32,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Legais</h4>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li>OAB/SP: EDITÁVEL</li>
+              <li>OAB/SP 530.036</li>
               <li>Política de Privacidade</li>
               <li>Termos de Uso</li>
             </ul>

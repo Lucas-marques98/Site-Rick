@@ -74,7 +74,7 @@ export default function About() {
             </div>
 
             <div className="bg-white border-l-4 border-primary p-5 shadow-sm inline-block rounded-r-lg">
-              <p className="font-serif text-slate-900 font-bold text-lg mb-1">OAB/SP: <span className="text-primary tracking-wider border-b border-primary/20 pb-0.5">EDITÁVEL</span></p>
+              <p className="font-serif text-slate-900 font-bold text-lg mb-1">OAB/SP: <span className="text-primary tracking-wider border-b border-primary/20 pb-0.5">530.036</span></p>
               <p className="text-sm text-slate-500">Regularmente inscrito na Ordem dos Advogados do Brasil</p>
             </div>
 

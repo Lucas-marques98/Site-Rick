@@ -20,9 +20,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Authority />
+      <About />
       <HowItWorks />
       <PracticeAreas />
-      <About />
       <SocialProof />
       <FAQ />
       <Contact />
