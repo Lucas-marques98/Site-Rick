@@ -26,15 +26,24 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden bg-slate-900">
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/office-hero.png" 
+          alt="Escritório de Advocacia" 
+          className="w-full h-full object-cover opacity-25 brightness-110 contrast-125 mix-blend-overlay grayscale" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/95"></div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center mb-16">
-          <div className="flex justify-center mb-4"><HelpCircle className="w-10 h-10 text-primary opacity-20" /></div>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 mb-4">
+          <div className="flex justify-center mb-4"><HelpCircle className="w-10 h-10 text-secondary opacity-50" /></div>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
             Dúvidas Frequentes
           </h2>
-          <p className="text-slate-600 text-lg">Respostas claras para a sua tranquilidade.</p>
+          <p className="text-slate-300 text-lg">Respostas claras para a sua tranquilidade.</p>
         </div>
 
         <div className="space-y-4">
