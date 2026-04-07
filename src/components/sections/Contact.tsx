@@ -37,10 +37,10 @@ export default function Contact() {
               href="https://wa.me/5511995544304?text=Olá,%20Dr.%20Henrique,%20gostaria%20de%20falar%20sobre%20um%20caso."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-primary to-slate-800 text-white rounded-lg shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 mb-12 font-medium text-lg group"
+              className="inline-flex flex-col sm:flex-row items-center justify-center w-full sm:w-auto px-4 py-4 sm:px-8 sm:py-5 bg-gradient-to-r from-primary to-slate-800 text-white rounded-lg shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 mb-10 sm:mb-12 font-medium text-center text-sm md:text-lg group"
             >
-              <MessageSquare className="w-5 h-5 mr-3 group-hover:animate-bounce" />
-              Falar com um advogado no WhatsApp
+              <MessageSquare className="w-5 h-5 mb-2 sm:mb-0 sm:mr-3 shrink-0 group-hover:animate-bounce" />
+              <span>Falar com um advogado no WhatsApp</span>
             </a>
 
             <div className="space-y-6">

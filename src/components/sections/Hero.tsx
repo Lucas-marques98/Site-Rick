@@ -61,18 +61,18 @@ export default function Hero() {
               className="w-full sm:w-auto flex items-center justify-center p-[2px] rounded-xl bg-gradient-to-r from-accent to-blue-400 group relative overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-blue-400/20 transform hover:scale-[1.05] active:scale-95 transition-all duration-300"
             >
               <div className="absolute inset-0 bg-white/20 group-hover:bg-transparent transition-colors duration-300"></div>
-              <div className="w-full bg-slate-900/40 backdrop-blur-sm px-8 py-4 rounded-[10px] flex items-center justify-center font-medium text-white transition-all duration-300 group-hover:bg-transparent">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Falar no WhatsApp
+              <div className="w-full bg-slate-900/40 backdrop-blur-sm px-4 sm:px-8 py-4 rounded-[10px] flex items-center justify-center font-medium text-white transition-all duration-300 group-hover:bg-transparent">
+                <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
+                <span>Falar no WhatsApp</span>
               </div>
             </a>
             
             <a 
               href="#contato" 
-              className="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/20 text-white rounded-xl hover:bg-white/10 hover:border-white/40 shadow-md hover:shadow-xl transform hover:scale-[1.05] active:scale-95 transition-all duration-300 font-medium flex items-center justify-center group backdrop-blur-sm"
+              className="w-full sm:w-auto px-4 sm:px-8 py-4 bg-transparent border border-white/20 text-white rounded-xl hover:bg-white/10 hover:border-white/40 shadow-md hover:shadow-xl transform hover:scale-[1.05] active:scale-95 transition-all duration-300 font-medium flex items-center justify-center group backdrop-blur-sm"
             >
-              Agendar Consulta
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <span>Agendar Consulta</span>
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 shrink-0 transition-transform" />
             </a>
           </div>
         </motion.div>

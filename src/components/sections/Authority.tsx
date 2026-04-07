@@ -13,8 +13,8 @@ export default function Authority() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-50 border border-slate-100 rounded-2xl p-8 md:p-12 shadow-sm">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 sm:p-8 md:p-12 shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
