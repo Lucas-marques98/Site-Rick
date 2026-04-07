@@ -11,7 +11,7 @@ export default function Footer() {
               <img 
                 src="/Logoo.png" 
                 alt="Dr. Henrique Fernandes Logo" 
-                className="h-28 md:h-56 w-auto object-contain mb-2 brightness-200 contrast-125 -ml-4 md:-ml-8 transform md:scale-110" 
+                className="h-24 md:h-56 w-auto object-contain mb-2 brightness-200 contrast-125 origin-left transform md:scale-110" 
               />
             </div>
             <p className="text-sm text-slate-400 max-w-sm">

@@ -68,9 +68,9 @@ export default function Contact() {
                 <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div className="ml-4 pt-1">
+                <div className="ml-4 pt-1 w-full overflow-hidden">
                   <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-1">E-mail</h4>
-                  <p className="text-slate-600">contato@drhenriquefernandes.com.br</p>
+                  <p className="text-slate-600 break-all md:break-normal">contato@drhenriquefernandes.com.br</p>
                 </div>
               </div>
             </div>
