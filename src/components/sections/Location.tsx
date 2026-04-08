@@ -74,7 +74,7 @@ export default function Location() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Info Cards */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -142,32 +142,33 @@ export default function Location() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-2"
+            className="lg:col-span-2 w-full min-w-0"
           >
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 relative">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 w-full">
               {/* Map header bar */}
-              <div className="bg-white px-5 py-3 flex items-center gap-3 border-b border-slate-100">
-                <div className="flex gap-1.5">
+              <div className="bg-white px-4 py-3 flex items-center gap-3 border-b border-slate-100">
+                <div className="flex gap-1.5 shrink-0">
                   <span className="w-3 h-3 rounded-full bg-red-400" />
                   <span className="w-3 h-3 rounded-full bg-yellow-400" />
                   <span className="w-3 h-3 rounded-full bg-green-400" />
                 </div>
-                <div className="flex-1 bg-slate-100 rounded-full px-4 py-1.5 text-xs text-slate-500 truncate">
+                <div className="flex-1 min-w-0 bg-slate-100 rounded-full px-3 py-1.5 text-xs text-slate-500 truncate">
                   maps.google.com · Av. Paulista, São Paulo
                 </div>
               </div>
 
-              {/* Google Maps Embed */}
-              <iframe
-                title="Localização do Escritório"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.157!2d-46.6533!3d-23.5635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1712480000000!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="420"
-                style={{ border: 0, display: "block" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              {/* Wrapper responsivo com aspect-ratio */}
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  title="Localização do Escritório"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.157!2d-46.6533!3d-23.5635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1712480000000!5m2!1spt-BR!2sbr"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
