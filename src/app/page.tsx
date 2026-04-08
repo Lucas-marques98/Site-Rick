@@ -8,6 +8,7 @@ import SocialProof from "@/components/sections/SocialProof";
 import Authority from "@/components/sections/Authority";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
+import Location from "@/components/sections/Location";
 import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import ExitIntentPopup from "@/components/ui/ExitIntentPopup";
@@ -26,6 +27,7 @@ export default function Home() {
       <SocialProof />
       <FAQ />
       <Contact />
+      <Location />
       <Footer />
       
       {/* Utilities */}
