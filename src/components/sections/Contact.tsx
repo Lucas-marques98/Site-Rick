@@ -13,11 +13,12 @@ export default function Contact() {
       window.open('https://wa.me/5511995544304?text=Olá,%20Desejo%20uma%20análise.', '_blank');
     }, 1200);
   };
+
   return (
     <section id="contato" className="py-16 md:py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16">
-          
+
           {/* CTA & Text */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -33,46 +34,39 @@ export default function Contact() {
               Não adie a resolução dos seus problemas. Entre em contato com nossa equipe para um atendimento sigiloso, rápido e focado em proteger aquilo que mais importa para você.
             </p>
 
-            <a 
+            <motion.a
               href="https://wa.me/5511995544304?text=Olá,%20Dr.%20Henrique,%20gostaria%20de%20falar%20sobre%20um%20caso."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex flex-col sm:flex-row items-center justify-center w-full sm:w-auto px-4 py-4 sm:px-8 sm:py-5 bg-gradient-to-r from-primary to-slate-800 text-white rounded-lg shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 mb-10 sm:mb-12 font-medium text-center text-sm md:text-lg group"
+              whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="inline-flex flex-col sm:flex-row items-center justify-center w-full sm:w-auto px-4 py-4 sm:px-8 sm:py-5 bg-gradient-to-r from-primary to-slate-800 text-white rounded-lg shadow-xl mb-10 sm:mb-12 font-medium text-center text-sm md:text-lg group"
             >
               <MessageSquare className="w-5 h-5 mb-2 sm:mb-0 sm:mr-3 shrink-0 group-hover:animate-bounce" />
               <span>Falar com um advogado no WhatsApp</span>
-            </a>
+            </motion.a>
 
             <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary shrink-0">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div className="ml-4 pt-1">
-                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-1">Telefone</h4>
-                  <p className="text-slate-600">+55 (11) 99554-4304</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary shrink-0">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div className="ml-4 pt-1">
-                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-1">Localização</h4>
-                  <p className="text-slate-600">Av. Paulista, Sala 1002, São Paulo - SP</p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary shrink-0">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div className="ml-4 pt-1 w-full overflow-hidden">
-                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-1">E-mail</h4>
-                  <p className="text-slate-600 break-all md:break-normal">contato@drhenriquefernandes.com.br</p>
-                </div>
-              </div>
+              {[
+                { icon: <Phone className="w-5 h-5" />, label: "Telefone", value: "+55 (11) 99554-4304" },
+                { icon: <MapPin className="w-5 h-5" />, label: "Localização", value: "Av. Paulista, Sala 1002, São Paulo - SP" },
+                { icon: <Mail className="w-5 h-5" />, label: "E-mail", value: "contato@drhenriquefernandes.com.br", breakAll: true },
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-start"
+                >
+                  <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary shrink-0">
+                    {item.icon}
+                  </div>
+                  <div className="ml-4 pt-1 w-full overflow-hidden">
+                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-1">{item.label}</h4>
+                    <p className={`text-slate-600 ${item.breakAll ? 'break-all md:break-normal' : ''}`}>{item.value}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
@@ -88,39 +82,42 @@ export default function Contact() {
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">Nome Completo</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary focus:scale-[1.02] outline-none transition-all duration-300 bg-white shadow-sm"
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-300 bg-white shadow-sm"
                     placeholder="João Silva"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Seu WhatsApp</label>
-                  <input 
-                    type="tel" 
-                    id="phone" 
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary focus:scale-[1.02] outline-none transition-all duration-300 bg-white shadow-sm"
+                  <input
+                    type="tel"
+                    id="phone"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-300 bg-white shadow-sm"
                     placeholder="(11) 90000-0000"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Descrição Curta do Caso (Opcional)</label>
-                  <textarea 
-                    id="message" 
+                  <textarea
+                    id="message"
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary focus:scale-[1.02] outline-none transition-all duration-300 bg-white resize-none shadow-sm"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-300 bg-white resize-none shadow-sm"
                     placeholder="Gostaria de tirar uma dúvida sobre..."
                   ></textarea>
                 </div>
-                
-                <button 
-                  type="button" 
+
+                <motion.button
+                  type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-slate-800 text-white font-medium py-4 rounded-lg transition-all duration-300 shadow-md flex justify-center items-center active:scale-[0.98] disabled:opacity-80"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                  className="w-full bg-primary hover:bg-slate-800 text-white font-medium py-4 rounded-lg transition-colors duration-300 shadow-md flex justify-center items-center disabled:opacity-80"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center">
@@ -130,7 +127,7 @@ export default function Contact() {
                   ) : (
                     "Enviar Mensagem Segura"
                   )}
-                </button>
+                </motion.button>
                 <p className="text-xs text-center text-slate-500 mt-4">
                   Garantimos total sigilo e confidencialidade.
                 </p>

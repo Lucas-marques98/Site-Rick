@@ -28,16 +28,16 @@ export default function FAQ() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden bg-slate-900">
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/office-hero.png" 
-          alt="Escritório de Advocacia" 
-          className="w-full h-full object-cover opacity-25 brightness-110 contrast-125 mix-blend-overlay grayscale" 
+        <img
+          src="/office-hero.png"
+          alt="Escritório de Advocacia"
+          className="w-full h-full object-cover opacity-25 brightness-110 contrast-125 mix-blend-overlay grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/95"></div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <div className="text-center mb-16">
           <div className="flex justify-center mb-4"><HelpCircle className="w-10 h-10 text-secondary opacity-50" /></div>
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
@@ -50,7 +50,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -58,17 +58,25 @@ export default function FAQ() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className={`bg-white rounded-xl shadow-sm border transition-colors duration-300 overflow-hidden ${isOpen ? 'border-primary/30 shadow-md' : 'border-slate-200'}`}
               >
-                <button
+                {/* Botão do acordeão — funciona em touch nativamente */}
+                <motion.button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-5 py-5 md:px-6 md:py-6 text-left flex justify-between items-center active:scale-[0.99] transition-transform"
+                  whileTap={{ scale: 0.99 }}
+                  className="w-full px-5 py-5 md:px-6 md:py-6 text-left flex justify-between items-center select-none"
+                  aria-expanded={isOpen}
                 >
                   <h3 className={`text-base md:text-lg font-bold pr-6 transition-colors ${isOpen ? 'text-primary' : 'text-slate-800'}`}>
                     {faq.question}
                   </h3>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-primary text-secondary rotate-180 shadow-md' : 'bg-slate-50 text-slate-400'}`}>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-primary text-secondary shadow-md' : 'bg-slate-50 text-slate-400'}`}
+                  >
                     <ChevronDown className="w-5 h-5" />
-                  </div>
-                </button>
+                  </motion.div>
+                </motion.button>
+
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div

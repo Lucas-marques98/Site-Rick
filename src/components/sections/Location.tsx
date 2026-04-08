@@ -1,6 +1,49 @@
 "use client"
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { MapPin, Clock, Navigation } from "lucide-react";
+import { useRef } from "react";
+
+function ParallaxCard({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const xSpring = useSpring(x, { stiffness: 180, damping: 20 });
+  const ySpring = useSpring(y, { stiffness: 180, damping: 20 });
+
+  const rotateX = useTransform(ySpring, [-40, 40], [5, -5]);
+  const rotateY = useTransform(xSpring, [-40, 40], [-5, 5]);
+
+  const handleMove = (clientX: number, clientY: number) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    x.set(clientX - (rect.left + rect.width / 2));
+    y.set(clientY - (rect.top + rect.height / 2));
+  };
+
+  const handleReset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 600 }}
+      onMouseMove={(e) => handleMove(e.clientX, e.clientY)}
+      onMouseLeave={handleReset}
+      onTouchMove={(e) => {
+        const t = e.touches[0];
+        handleMove(t.clientX, t.clientY);
+      }}
+      onTouchEnd={handleReset}
+      whileTap={{ scale: 0.97 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Location() {
   return (
@@ -41,49 +84,56 @@ export default function Location() {
             className="space-y-5"
           >
             {/* Address */}
-            <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-1">Endereço</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    Av. Paulista, 1000, Sala 1002<br />
-                    Bela Vista – São Paulo, SP<br />
-                    CEP: 01310-100
-                  </p>
+            <ParallaxCard>
+              <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-1">Endereço</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Av. Paulista, 1000, Sala 1002<br />
+                      Bela Vista – São Paulo, SP<br />
+                      CEP: 01310-100
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ParallaxCard>
 
             {/* Hours */}
-            <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-1">Horário de Atendimento</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    Segunda a Sexta: 9h às 18h<br />
-                    Sábado: 9h às 13h<br />
-                    <span className="text-primary font-medium">Urgências: WhatsApp 24h</span>
-                  </p>
+            <ParallaxCard>
+              <div className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-1">Horário de Atendimento</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Segunda a Sexta: 9h às 18h<br />
+                      Sábado: 9h às 13h<br />
+                      <span className="text-primary font-medium">Urgências: WhatsApp 24h</span>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ParallaxCard>
 
             {/* CTA */}
-            <a
+            <motion.a
               href="https://www.google.com/maps/search/Av.+Paulista,+1000,+São+Paulo"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-primary to-slate-800 text-white font-medium py-4 px-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              whileHover={{ scale: 1.03, boxShadow: "0 12px 30px rgba(0,0,0,0.2)" }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-primary to-slate-800 text-white font-medium py-4 px-6 rounded-xl shadow-lg"
             >
               <Navigation className="w-5 h-5" />
               Abrir no Google Maps
-            </a>
+            </motion.a>
           </motion.div>
 
           {/* Map */}
@@ -107,7 +157,7 @@ export default function Location() {
                 </div>
               </div>
 
-              {/* Google Maps Embed — Av. Paulista, São Paulo */}
+              {/* Google Maps Embed */}
               <iframe
                 title="Localização do Escritório"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.157!2d-46.6533!3d-23.5635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1712480000000!5m2!1spt-BR!2sbr"

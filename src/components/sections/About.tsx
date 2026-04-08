@@ -1,6 +1,48 @@
 "use client"
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { CheckCircle2, Shield } from "lucide-react";
+import { useRef } from "react";
+
+function ParallaxImage({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const xSpring = useSpring(x, { stiffness: 150, damping: 18 });
+  const ySpring = useSpring(y, { stiffness: 150, damping: 18 });
+
+  const rotateX = useTransform(ySpring, [-60, 60], [6, -6]);
+  const rotateY = useTransform(xSpring, [-60, 60], [-6, 6]);
+
+  const handleMove = (clientX: number, clientY: number) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    x.set(clientX - (rect.left + rect.width / 2));
+    y.set(clientY - (rect.top + rect.height / 2));
+  };
+
+  const handleReset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 800 }}
+      onMouseMove={(e) => handleMove(e.clientX, e.clientY)}
+      onMouseLeave={handleReset}
+      onTouchMove={(e) => {
+        const t = e.touches[0];
+        handleMove(t.clientX, t.clientY);
+      }}
+      onTouchEnd={handleReset}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function About() {
   return (
@@ -15,25 +57,32 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1 relative"
           >
-            <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0">
-              <div className="absolute -inset-2 md:-inset-4 border border-secondary/30 rounded-xl transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10"></div>
-              <div className="absolute -inset-2 md:-inset-4 border-2 border-primary/10 rounded-xl transform -translate-x-1 -translate-y-1 md:-translate-x-3 md:-translate-y-3 -z-10 bg-slate-50"></div>
+            <ParallaxImage>
+              <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0">
+                <div className="absolute -inset-2 md:-inset-4 border border-secondary/30 rounded-xl transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10"></div>
+                <div className="absolute -inset-2 md:-inset-4 border-2 border-primary/10 rounded-xl transform -translate-x-1 -translate-y-1 md:-translate-x-3 md:-translate-y-3 -z-10 bg-slate-50"></div>
 
-              <div className="relative w-full h-full overflow-hidden rounded-xl shadow-lg group">
-                <img
-                  src="/rick.png"
-                  alt="Dr. Henrique Fernandes"
-                  className="w-full h-full object-cover rounded-xl transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-700 pointer-events-none"></div>
-              </div>
+                <div className="relative w-full h-full overflow-hidden rounded-xl shadow-lg group">
+                  <img
+                    src="/rick.png"
+                    alt="Dr. Henrique Fernandes"
+                    className="w-full h-full object-cover rounded-xl transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-700 pointer-events-none"></div>
+                </div>
 
-              <div className="absolute -bottom-4 -right-2 sm:-bottom-8 sm:-right-8 bg-primary text-white p-4 md:p-6 rounded-xl shadow-2xl max-w-[160px] sm:max-w-[180px] md:max-w-[200px] z-10 hover:-translate-y-2 transition-all duration-300 hover:shadow-primary/30">
-                <Shield className="w-8 h-8 mb-3 text-secondary" />
-                <p className="font-serif font-bold text-lg leading-tight mb-1">Ética e Transparência</p>
-                <p className="text-sm text-slate-300">Valores fundamentais</p>
+                <motion.div
+                  whileHover={{ y: -8, boxShadow: "0 25px 50px rgba(0,0,0,0.25)" }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="absolute -bottom-4 -right-2 sm:-bottom-8 sm:-right-8 bg-primary text-white p-4 md:p-6 rounded-xl shadow-2xl max-w-[160px] sm:max-w-[180px] md:max-w-[200px] z-10 cursor-pointer"
+                >
+                  <Shield className="w-8 h-8 mb-3 text-secondary" />
+                  <p className="font-serif font-bold text-lg leading-tight mb-1">Ética e Transparência</p>
+                  <p className="text-sm text-slate-300">Valores fundamentais</p>
+                </motion.div>
               </div>
-            </div>
+            </ParallaxImage>
           </motion.div>
 
           <motion.div
@@ -66,10 +115,14 @@ export default function About() {
                 "Sigilo e Confidencialidade",
                 "Agilidade e Transparência"
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start">
+                <motion.div
+                  key={idx}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-start"
+                >
                   <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mr-3 mt-0.5" />
                   <span className="text-slate-700 font-medium">{item}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
 
